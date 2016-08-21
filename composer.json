@@ -1,0 +1,9 @@
+{
+  "repositories": [
+    {"type": "composer", "url": "http://toran.weca.mp/repo/packagist/"},
+    {"packagist": false}
+  ],
+  "config": {
+    "secure-http":false
+  }
+}
