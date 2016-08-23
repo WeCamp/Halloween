@@ -15,7 +15,7 @@ return [
          [
              'name' => 'home',
              'path' => '/',
-             'middleware' => App\Action\Home::class,
+             'middleware' => \Halloween\TrickOrTreat\App\Action\Home::class,
              'allowed_methods' => ['GET'],
          ],
     ],

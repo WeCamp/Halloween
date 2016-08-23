@@ -1,5 +1,5 @@
 <?php
-namespace App\Action;
+namespace Halloween\TrickOrTreat\App\Action;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

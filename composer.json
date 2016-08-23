@@ -40,7 +40,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/App/"
+            "Halloween\\TrickOrTreat\\": "src/"
         }
     },
     "autoload-dev": {
