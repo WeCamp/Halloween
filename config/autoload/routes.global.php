@@ -12,11 +12,11 @@ return [
 
     'routes' => [
         // Example:
-        // [
-        //     'name' => 'home',
-        //     'path' => '/',
-        //     'middleware' => App\Action\HomePageAction::class,
-        //     'allowed_methods' => ['GET'],
-        // ],
+         [
+             'name' => 'home',
+             'path' => '/',
+             'middleware' => App\Action\Home::class,
+             'allowed_methods' => ['GET'],
+         ],
     ],
 ];
