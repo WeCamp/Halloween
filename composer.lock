@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "979f833c07260a18968d2a7e0b2b6332",
-    "content-hash": "6c4ba193421d8ce71e9759c88d387a99",
+    "hash": "bb262ef306f53d1916758b0a93343259",
+    "content-hash": "4ea0e86834e17b69d6fb1d9ccc25c1d7",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -403,16 +403,16 @@
         },
         {
             "name": "prooph/event-store",
-            "version": "v6.3.0",
+            "version": "v6.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/prooph/event-store.git",
-                "reference": "6c43333e21c5206f848ef6530bf943563b7b06b0"
+                "reference": "64215fc111a9096d436a7bab9d4075c2dd4bc334"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/prooph/event-store/zipball/6c43333e21c5206f848ef6530bf943563b7b06b0",
-                "reference": "6c43333e21c5206f848ef6530bf943563b7b06b0",
+                "url": "https://api.github.com/repos/prooph/event-store/zipball/64215fc111a9096d436a7bab9d4075c2dd4bc334",
+                "reference": "64215fc111a9096d436a7bab9d4075c2dd4bc334",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -424,19 +424,16 @@
             "require": {
                 "beberlei/assert": "~2.3",
                 "php": "~5.5|~7.0",
-                "prooph/common": "~3.7"
-            },
-            "conflict": {
-                "sandrokeil/interop-config": "<1.0"
+                "prooph/common": "~3.3"
             },
             "require-dev": {
                 "container-interop/container-interop": "^1.1",
                 "fabpot/php-cs-fixer": "1.7.*",
                 "phpunit/phpunit": "~4.8",
                 "ramsey/uuid": "~2.8",
-                "sandrokeil/interop-config": "^1.0",
+                "sandrokeil/interop-config": "^0.3.1",
                 "satooshi/php-coveralls": "^1.0",
-                "tobiju/bookdown-bootswatch-templates": "^1.0",
+                "tobiju/bookdown-bootswatch-templates": "^0.2.0",
                 "zendframework/zend-servicemanager": "~2.6"
             },
             "suggest": {
@@ -480,7 +477,7 @@
                 "ddd",
                 "prooph"
             ],
-            "time": "2016-06-27 13:35:57"
+            "time": "2016-04-22 18:53:21"
         },
         {
             "name": "prooph/event-store-bus-bridge",
@@ -624,16 +621,16 @@
         },
         {
             "name": "prooph/service-bus",
-            "version": "v5.1.0",
+            "version": "v5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/prooph/service-bus.git",
-                "reference": "5b6ca97504af42b4ab80b3eccee3da4b34cc0790"
+                "reference": "613088f3ed2e35d422e84bdda56da6ca14302949"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/prooph/service-bus/zipball/5b6ca97504af42b4ab80b3eccee3da4b34cc0790",
-                "reference": "5b6ca97504af42b4ab80b3eccee3da4b34cc0790",
+                "url": "https://api.github.com/repos/prooph/service-bus/zipball/613088f3ed2e35d422e84bdda56da6ca14302949",
+                "reference": "613088f3ed2e35d422e84bdda56da6ca14302949",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -643,28 +640,25 @@
                 ]
             },
             "require": {
-                "beberlei/assert": "^2.4",
-                "php": "~5.5 || ~7.0",
-                "prooph/common": "^3.7",
-                "react/promise": "^2.2.2"
-            },
-            "conflict": {
-                "sandrokeil/interop-config": "<1.0"
+                "beberlei/assert": "^2.0",
+                "php": "~5.5|~7.0",
+                "prooph/common": "^3.3",
+                "react/promise": "^2.2"
             },
             "require-dev": {
                 "container-interop/container-interop": "^1.1",
-                "fabpot/php-cs-fixer": "^1.7",
-                "phpunit/phpunit": "^4.8.23",
-                "sandrokeil/interop-config": "^1.0",
+                "fabpot/php-cs-fixer": "1.7.*",
+                "phpunit/phpunit": "~4.8",
+                "sandrokeil/interop-config": "^0.3",
                 "satooshi/php-coveralls": "^1.0",
-                "tobiju/bookdown-bootswatch-templates": "^1.0"
+                "tobiju/bookdown-bootswatch-templates": "^0.2.0"
             },
             "suggest": {
                 "container-interop/container-interop": "For usage of provided factories",
                 "prooph/event-store": "Let the EventBus dispatch persisted DomainEvents",
                 "prooph/service-bus-zfc-rbac-bridge": "Use ZfcRbac as authorization service for route and finalize guard",
                 "sandrokeil/interop-config": "For usage of provided factories",
-                "zendframework/zend-servicemanager": "Use Zend ServiceManager to lazy load your handlers and listeners"
+                "zendframework/zend-servicemanager": "Use Zf2 ServiceManager to lazy load your handlers and listeners"
             },
             "type": "library",
             "autoload": {
@@ -695,7 +689,7 @@
                 "messaging",
                 "prooph"
             ],
-            "time": "2016-05-08 18:14:36"
+            "time": "2016-02-10 21:17:29"
         },
         {
             "name": "psr/http-message",
@@ -1007,6 +1001,74 @@
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "time": "2016-07-29 12:29:36"
+        },
+        {
+            "name": "sandrokeil/interop-config",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sandrokeil/interop-config.git",
+                "reference": "eebb26d69223952c8693636482d6bd0bbd545255"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sandrokeil/interop-config/zipball/eebb26d69223952c8693636482d6bd0bbd545255",
+                "reference": "eebb26d69223952c8693636482d6bd0bbd545255",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "http://toran.weca.mp/repo/packagist/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "^0.5",
+                "phpunit/php-invoker": "~1.1",
+                "phpunit/phpunit": "~4.8",
+                "squizlabs/php_codesniffer": "~2.3",
+                "tobiju/bookdown-bootswatch-templates": "1.0.x-dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev",
+                    "dev-develop": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Interop\\Config\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sandro Keil",
+                    "homepage": "https://sandro-keil.de",
+                    "role": "maintainer"
+                }
+            ],
+            "description": "Provides interfaces and a concrete implementation to create instances depending on configuration via factory classes and ensures a uniform config structure. It can also be used to auto discover factories and to create configuration files.",
+            "homepage": "https://github.com/sandrokeil/interop-config",
+            "keywords": [
+                "config",
+                "configuration",
+                "factory",
+                "interfaces",
+                "interop",
+                "options",
+                "php",
+                "service",
+                "standard"
+            ],
+            "time": "2015-10-21 18:14:05"
         },
         {
             "name": "zendframework/zend-code",

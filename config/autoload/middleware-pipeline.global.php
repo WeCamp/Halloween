@@ -61,6 +61,7 @@ return [
         'error' => [
             'middleware' => [
                 // Add error middleware here.
+                \Halloween\TrickOrTreat\Middleware\JsonError::class
             ],
             'error'    => true,
             'priority' => -10000,
