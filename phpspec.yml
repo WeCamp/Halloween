@@ -1,3 +1,9 @@
+extensions:
+  - PhpSpecExtension\MatcherLoader\Extension
+
+matchers:
+  - Halloween\TrickOrTreat\PhpSpec\Matcher\AggregateChangedRecorderMatcher
+
 suites:
     trick_or_treat_suite:
         namespace: Halloween\TrickOrTreat

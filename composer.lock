@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8664d9833236521485d6920c22b8d7aa",
-    "content-hash": "35b625f16f61f772f71bc85564b61a3c",
+    "hash": "82fde4450170e3fd87d3f7bb72e09676",
+    "content-hash": "fea2e71beb9a37d99fc8f39e18ab13de",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2034,6 +2034,59 @@
                 "zf2"
             ],
             "time": "2016-05-06 18:25:35"
+        },
+        {
+            "name": "nick-jones/phpspec-matcher-loader-extension",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nick-jones/phpspec-matcher-loader-extension.git",
+                "reference": "4d13922bf071e12e9c4b676ac18943b7b9c1f7dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nick-jones/phpspec-matcher-loader-extension/zipball/4d13922bf071e12e9c4b676ac18943b7b9c1f7dc",
+                "reference": "4d13922bf071e12e9c4b676ac18943b7b9c1f7dc",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "http://toran.weca.mp/repo/packagist/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "phpspec/phpspec": "^2.0"
+            },
+            "require-dev": {
+                "behat/behat": "^3.0",
+                "bossa/phpspec2-expect": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpSpecExtension\\MatcherLoader\\": "lib/MatcherLoader/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicholas Jones"
+                }
+            ],
+            "description": "Allows custom phpspec matchers to be registered via configuration",
+            "keywords": [
+                "custom",
+                "extension",
+                "loader",
+                "matcher",
+                "phpspec"
+            ],
+            "time": "2015-10-23 20:54:52"
         },
         {
             "name": "phpdocumentor/reflection-common",
