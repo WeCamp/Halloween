@@ -1,0 +1,4 @@
+suites:
+    trick_or_treat_suite:
+        namespace: Halloween\TrickOrTreat
+        psr4_prefix: Halloween\TrickOrTreat
