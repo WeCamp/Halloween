@@ -2,6 +2,7 @@
 
 namespace spec\Halloween\TrickOrTreat\Domain\Ingredient;
 
+use Halloween\TrickOrTreat\Domain\Ingredient\Event\IngredientWasAdded;
 use Halloween\TrickOrTreat\Domain\Ingredient\IngredientId;
 use PhpSpec\ObjectBehavior;
 
@@ -15,6 +16,6 @@ class IngredientSpec extends ObjectBehavior
         $ingredientId = IngredientId::generate();
         $this->beConstructedThrough('add', [$ingredientId, 'pepper']);
 
-        $this->shouldHaveRecorded(IngredientWasAdded::class);
+        $this->shouldHaveRecorded(IngredientWasAdded::withData($ingredientId, 'pepper'));
     }
 }
