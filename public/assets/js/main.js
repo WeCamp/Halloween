@@ -2,26 +2,41 @@ window.onload = function () {
     var vm = new Vue({
         el: '#el',
         data: {
-            Players: {
-                player_1: "",
-                player_2: ""
-            },
-            AvailableIngredients: [],
             Game: {
-                round: null
-            }
+                gameId: null,
+                Round: {
+                    no: 1,
+                    availableIngredients: []
+                },
+                Players: {
+                    PlayerOne: {
+                        name: "",
+                        isGameOver: false,
+                        alreadyChosenIngredients: [],
+                        chosenIngredients: []
+                    },
+                    PlayerTwo: {
+                        name: "",
+                        isGameOver: false,
+                        alreadyChosenIngredients: [],
+                        chosenIngredients: []
+                    }
+                }
+            },
         },
         methods: {
-            signIn: function () {
+            initialiseGame: function () {
                 var json_data = {
-                    player_1: this.Players.player_1,
-                    player_2: this.Players.player_2
+                    playerOne: this.Players.PlayerOne.name,
+                    playerTwo: this.Players.PlayerTwo.name
                 };
-                this.$http.post('/sign-in-names', JSON.stringify(json_data))
+                this.$http.post('/initialise-game', JSON.stringify(json_data))
                     .then(
                         function (response) {
-                            this.$set('Game', response.data.Game);
-                            this.$set('Players', response.data.Players);
+                            this.$set('Game.id', response.data.Game.gameId);
+                            this.$set('Players.Player1.Name', response.data.playerOne);
+                            this.$set('Players.Player2.Name', response.data.playerTwo);
+                            this.$set('Game.Round.availableIngredients', response.data.ingredients);
                         },
                         function (response) {
                             // error

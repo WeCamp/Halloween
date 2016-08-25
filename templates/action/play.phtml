@@ -1,6 +1,6 @@
 <div id="el">
 
-    <div class="panel panel-default">
+    <div v-if="Game.round == null" class="panel panel-default">
         <div class="panel-heading">
             Trick Or Treat - Sign in
         </div>
@@ -10,8 +10,22 @@
             <input class="btn btn-default" type="button" name="SignIn" value="We're crazy hungry, Sign in!" v-on:click="signIn">
         </div>
     </div>
-    <p>{{Players.player_1}}</p>
-    <p>{{Players.player_2}}</p>
-    <div>
+    <div v-else>
+        <div v-if="Game.state==1">
+            <h1>{{Players.player_1}} pick your ingredients for your friend {{Players.player_2}}</h1>
+            <p>Todo: List of ingredients</p>
+            <input class="btn btn-default" type="button" name="confirmIngredientsPlayer1" value="Confirm ingredients for my friend {{Players.player_2}}" v-on:click="confirmIngredients">
+        </div>
+    </div>
+
+    <div v-if="Game.state==2">
+        <h1>{{Players.player_1}} did you eat your meal?</h1>
+        <input class="btn btn-default" type="button" name="playerHasFinishedDish1" value="Yes" v-on:click="playerHasFinishedDish(1)"><br/>
+        <input class="btn btn-default" type="button" name="playerHasDidNotFinishDish1" value="No way!" v-on:click="playerHasDidNotFinishDish(1)">
+
+        <h1>{{Players.player_2}} did you eat your meal?</h1>
+        <input class="btn btn-default" type="button" name="playerHasFinishedDish2" value="Yes" v-on:click="playerHasFinishedDish(2)"><br/>
+        <input class="btn btn-default" type="button" name="playerHasDidNotFinishDish2" value="No way!" v-on:click="playerHasDidNotFinishDish(2)">
+
     </div>
 </div>
