@@ -28,8 +28,8 @@
 <section class="player-names">
 
     <div class="l-container" v-show="Game.gameState == 'signIn'">
-            <input type="text" placeholder="Player one">
-            <input type="text" placeholder="Player two">
+            <input type="text" placeholder="Player one" v-model="Game.Players.PlayerOne.name">
+            <input type="text" placeholder="Player two" v-model="Game.Players.PlayerTwo.name">
 
             <button name="submit" v-on:click="initialiseGame">Play</button>
     </div>

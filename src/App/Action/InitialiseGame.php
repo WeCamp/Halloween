@@ -28,19 +28,24 @@ final class InitialiseGame
      */
     public function __invoke(RequestInterface $request, ResponseInterface $response, callable $next)
     {
-        $gameId = GameId::generate();
-        $json = json_decode($request->getBody());
-        $command = Command::withPlayers($gameId, $json->playerOne, $json->playerTwo);
-        $this->commandBus->dispatch($command);
-
-        return new JsonResponse(
-            [
-                'gameId' => $gameId->toString(),
-                'playerOne' => $json->playerOne,
-                'playerTwo' => $json->playerTwo,
-                'ingredients' => $this->listIngredients()
-            ]
-        );
+        try {
+            $gameId = GameId::generate();
+            $json = json_decode($request->getBody());
+            $command = Command::withPlayers($gameId, $json->playerOne, $json->playerTwo);
+            $this->commandBus->dispatch($command);
+            return new JsonResponse(
+                [
+                    'gameId' => $gameId->toString(),
+                    'playerOne' => $json->playerOne,
+                    'playerTwo' => $json->playerTwo,
+                    'ingredients' => $this->listIngredients()
+                ]
+            );
+        } catch (\Exception $e) {
+            return new JsonResponse(
+                ['error' => $e->getMessage()]
+            );
+        }
     }
 
     private function listIngredients()
