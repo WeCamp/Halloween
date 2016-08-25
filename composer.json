@@ -39,6 +39,7 @@
         "prooph/psr7-middleware": "^0.1",
         "prooph/service-bus" : "^5.0",
 		"rhumsaa/uuid": "^2.8",
+		"zendframework/zend-expressive-zendviewrenderer": "^1.1",
         "sandrokeil/interop-config": "^0.3.1"
     },
     "require-dev": {

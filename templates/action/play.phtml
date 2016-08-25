@@ -1,0 +1,17 @@
+<div id="el">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Trick Or Treat - Sign in
+        </div>
+        <div class="panel-body">
+            <input type="text" name="player_1" id="player_1" value="" v-model="Players.player_1"/><br/>
+            <input type="text" name="player_2" id="player_2" value="" v-model="Players.player_2"/><br/>
+            <input class="btn btn-default" type="button" name="SignIn" value="We're crazy hungry, Sign in!" v-on:click="signIn">
+        </div>
+    </div>
+    <p>{{Players.player_1}}</p>
+    <p>{{Players.player_2}}</p>
+    <div>
+    </div>
+</div>

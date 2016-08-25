@@ -20,6 +20,7 @@ return [
             Application::class => ApplicationFactory::class,
             Helper\UrlHelper::class => Helper\UrlHelperFactory::class,
             // Middleware
+            \Halloween\TrickOrTreat\App\Action\Play::class => \Halloween\TrickOrTreat\Container\App\Action\NewGameFactory::class,
             \Halloween\TrickOrTreat\App\Action\Home::class => \Halloween\TrickOrTreat\Container\App\Action\HomeFactory::class,
             // App Stuff
             \Halloween\TrickOrTreat\Domain\Ingredient\AvailableIngredients::class => \Halloween\TrickOrTreat\Container\Infrastructure\Ingredient\EventStoreAvailableIngredientsFactory::class,
