@@ -13,7 +13,7 @@ return [
     'templates' => [
         'layout' => 'layout/default',
         'map' => [
-            'layout/default' => 'templates/layout/default.phtml',
+            'layout/default' => 'templates/layout/trickortreat.phtml',
             'error/error'    => 'templates/error/error.phtml',
             'error/404'      => 'templates/error/404.phtml',
             'page::play' => 'templates/action/play.phtml',
