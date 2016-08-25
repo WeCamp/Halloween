@@ -22,7 +22,7 @@ return [
 //            'app'     => ['templates/app'],
 //            'layout'  => ['templates/layout'],
 //            'include' => ['templates/include'],
-//            'error'   => ['templates/error'],
+            'error'   => ['templates/error'],
         ],
     ],
     'view_helpers' => [
