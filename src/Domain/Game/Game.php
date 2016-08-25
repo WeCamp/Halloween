@@ -3,6 +3,7 @@
 namespace Halloween\TrickOrTreat\Domain\Game;
 
 use Halloween\TrickOrTreat\Domain\Game\Event\CurrentRoundHasBeenFinished;
+use Halloween\TrickOrTreat\Domain\Game\Event\GameHasFinished;
 use Halloween\TrickOrTreat\Domain\Game\Event\GameWasInitialised;
 use Halloween\TrickOrTreat\Domain\Game\Event\GameWasStarted;
 use Halloween\TrickOrTreat\Domain\Game\Event\PlayerOneHasEatenHisMeal;
@@ -128,5 +129,21 @@ final class Game extends AggregateRoot
         $this->roundNumber = $this->roundNumber + 1;
         $this->playerOneAte = false;
         $this->playerTwoAte = false;
+    }
+
+    public function playerOneQuits()
+    {
+        $this->recordThat(GameHasFinished::withWinnerInRound($this->gameId, $this->playerTwo, $this->roundNumber));
+    }
+
+    protected function whenGameHasFinished(GameHasFinished $event)
+    {
+
+
+    }
+
+    public function playerTwoQuits()
+    {
+        $this->recordThat(GameHasFinished::withWinnerInRound($this->gameId, $this->playerOne, $this->roundNumber));
     }
 }

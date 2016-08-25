@@ -3,11 +3,13 @@
 namespace spec\Halloween\TrickOrTreat\Domain\Game;
 
 use Halloween\TrickOrTreat\Domain\Game\Event\CurrentRoundHasBeenFinished;
+use Halloween\TrickOrTreat\Domain\Game\Event\GameHasFinished;
 use Halloween\TrickOrTreat\Domain\Game\Event\GameWasInitialised;
 use Halloween\TrickOrTreat\Domain\Game\Event\GameWasStarted;
 use Halloween\TrickOrTreat\Domain\Game\Event\PlayerOneHasEatenHisMeal;
 use Halloween\TrickOrTreat\Domain\Game\Event\PlayerTwoHasEatenHisMeal;
 use Halloween\TrickOrTreat\Domain\Game\GameId;
+use Halloween\TrickOrTreat\Domain\Game\Player;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -15,10 +17,12 @@ use PhpSpec\ObjectBehavior;
  */
 class GameSpec extends ObjectBehavior
 {
+    private $gameId;
+
     function let()
     {
-        $gameId = GameId::generate();
-        $this->beConstructedThrough('initializeWithPlayerNames', [$gameId, 'Mitchel', 'Petar']);
+        $this->gameId = GameId::generate();
+        $this->beConstructedThrough('initializeWithPlayerNames', [$this->gameId, 'Mitchel', 'Petar']);
     }
 
     function it_is_initializable()
@@ -49,14 +53,12 @@ class GameSpec extends ObjectBehavior
     }
 
     function it_should_finish_the_round()
-
     {
         $this->playerOneAteMeal();
 
         $this->playerTwoAteMeal();
 
         $this->finishRound();
-
 
         $this->shouldHaveRecorded(CurrentRoundHasBeenFinished::class);
     }
@@ -67,5 +69,20 @@ class GameSpec extends ObjectBehavior
         $this->shouldThrow(\LogicException::class)->duringFinishRound();
         $this->playerTwoAteMeal();
         $this->shouldNotThrow(\LogicException::class)->duringFinishRound();
+    }
+
+    function it_should_end_a_game_when_player_one_quits() {
+        $this->start();
+        $this->playerOneQuits();
+
+        $this->shouldHaveRecorded(GameHasFinished::withWinnerInRound($this->gameId, new Player('Petar'), 1));
+    }
+
+
+    function it_should_end_a_game_when_player_two_quits() {
+        $this->start();
+        $this->playerTwoQuits();
+
+        $this->shouldHaveRecorded(GameHasFinished::withWinnerInRound($this->gameId, new Player('Mitchel'), 1));
     }
 }
