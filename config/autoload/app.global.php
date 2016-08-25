@@ -49,7 +49,8 @@ return [
                 'router' => [
                     'routes' => [
                         \Halloween\TrickOrTreat\Domain\Ingredient\Command\AddIngredient::class => \Halloween\TrickOrTreat\Domain\Ingredient\Handler\AddIngredientHandler::class,
-                        \Halloween\TrickOrTreat\Domain\Game\Command\InitialiseGame::class => \Halloween\TrickOrTreat\Domain\Game\Handler\InitialiseGameHandler::class
+                        \Halloween\TrickOrTreat\Domain\Game\Command\InitialiseGame::class => \Halloween\TrickOrTreat\Domain\Game\Handler\InitialiseGameHandler::class,
+                        \Halloween\TrickOrTreat\Domain\Game\Command\FinishRound::class => \Halloween\TrickOrTreat\Domain\Game\Handler\FinishRoundHandler::class,
                     ],
                 ],
             ],
