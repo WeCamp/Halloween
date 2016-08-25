@@ -33,6 +33,9 @@ class Ingredient extends AggregateRoot
         return $this->aggregateId->toString();
     }
 
+    /**
+     * @param IngredientWasAdded $event
+     */
     protected function whenIngredientWasAdded(IngredientWasAdded $event)
     {
         $this->aggregateId = $event->ingredientId();

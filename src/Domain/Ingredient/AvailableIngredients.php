@@ -7,8 +7,8 @@ interface AvailableIngredients
 {
 
     public function add(Ingredient $ingredient);
-    public function get(IngredientId $ingredientId);
 
+    public function get(IngredientId $ingredientId);
 
 
 }
