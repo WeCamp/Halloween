@@ -25,9 +25,9 @@ return [
             'allowed_methods' => ['GET'],
         ],
         [
-            'name' => 'sign_in',
-            'path' => '/sign-in-names',
-            'middleware' => \Halloween\TrickOrTreat\App\Action\SignIn::class,
+            'name' => 'initialise_game',
+            'path' => '/initialise-game',
+            'middleware' => \Halloween\TrickOrTreat\App\Action\InitialiseGame::class,
             'allowed_methods' => ['POST'],
         ],
         [

@@ -6,7 +6,7 @@ use Halloween\TrickOrTreat\Infrastructure\Repository\EventStoreGame;
 use Interop\Container\ContainerInterface;
 use Prooph\EventStore\Container\Aggregate\AbstractAggregateRepositoryFactory;
 
-final class EventStoreGameFactory extends AbstractAggregateRepositoryFactory
+final class EventStoreGameRepositoryFactory extends AbstractAggregateRepositoryFactory
 {
     /**
      * Returns the container identifier
@@ -15,6 +15,6 @@ final class EventStoreGameFactory extends AbstractAggregateRepositoryFactory
      */
     public function containerId()
     {
-        return 'game';
+        return 'game_repository';
     }
 }

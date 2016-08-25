@@ -10,7 +10,7 @@ use Halloween\TrickOrTreat\Domain\Game\GameId;
 /**
  * Class EventStoreAvailableIngredients
  */
-final class EventStoreGame extends AggregateRepository implements GameRepository
+final class EventStoreGameRepository extends AggregateRepository implements GameRepository
 {
     /**
      * @param Game $game
