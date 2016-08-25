@@ -8,6 +8,13 @@ use Prooph\EventSourcing\AggregateChanged;
 
 final class GameWasInitialised extends AggregateChanged
 {
+    /**
+     * @param GameId $gameId
+     * @param Player $playerOne
+     * @param Player $playerTwo
+     *
+     * @return static
+     */
     public static function withPlayers(GameId $gameId, Player $playerOne, Player $playerTwo)
     {
         return self::occur($gameId->toString(), ['playerOne' => $playerOne->name(), 'playerTwo' => $playerTwo->name()]);

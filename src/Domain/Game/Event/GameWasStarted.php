@@ -7,6 +7,11 @@ use Prooph\EventSourcing\AggregateChanged;
 
 final class GameWasStarted extends AggregateChanged
 {
+    /**
+     * @param GameId $gameId
+     *
+     * @return static
+     */
     public static function withId(GameId $gameId)
     {
         return self::occur($gameId->toString());

@@ -7,9 +7,15 @@ use Prooph\EventSourcing\AggregateChanged;
 
 final class CurrentRoundHasBeenFinished extends AggregateChanged
 {
+    /**
+     * @param GameId  $gameId
+     * @param integer $roundNumber
+     *
+     * @return static
+     */
     public static function withId(GameId $gameId, $roundNumber)
     {
-        return self::occur($gameId->toString(), ['roundNumber' => $roundNumber]);
+        return self::occur($gameId->toString(), ['roundNumber' => (int)$roundNumber]);
     }
 
     /**
@@ -22,7 +28,7 @@ final class CurrentRoundHasBeenFinished extends AggregateChanged
 
     public function roundNumber()
     {
-        return (int) $this->payload['roundNumber'];
+        return (int)$this->payload['roundNumber'];
     }
 
 }
