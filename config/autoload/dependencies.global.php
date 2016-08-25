@@ -19,7 +19,7 @@ return [
         'factories' => [
             Application::class => ApplicationFactory::class,
             Helper\UrlHelper::class => Helper\UrlHelperFactory::class,
-            \Halloween\TrickOrTreat\App\Action\NewGame::class => \Halloween\TrickOrTreat\Container\App\Action\NewGameFactory::class,
+            \Halloween\TrickOrTreat\App\Action\Play::class => \Halloween\TrickOrTreat\Container\App\Action\NewGameFactory::class,
         ],
     ],
 ];

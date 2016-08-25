@@ -6,7 +6,7 @@ use Psr\Http\Message\ResponseInterface;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
-final class NewGame
+final class Play
 {
     /**
      * @var TemplateRendererInterface

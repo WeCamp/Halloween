@@ -21,7 +21,7 @@ return [
         [
             'name' => 'play',
             'path' => '/play',
-            'middleware' => \Halloween\TrickOrTreat\App\Action\NewGame::class,
+            'middleware' => \Halloween\TrickOrTreat\App\Action\Play::class,
             'allowed_methods' => ['GET'],
         ],
         [
@@ -33,7 +33,7 @@ return [
         [
             'name' => 'make_ingredient_list',
             'path' => '/make-ingredient-list',
-            'middleware' => \Halloween\TrickOrTreat\App\Action\MakeIngredientList::class,
+            'middleware' => \Halloween\TrickOrTreat\App\Action\MakeIngredientListForRound::class,
             'allowed_methods' => ['POST'],
         ],
         [

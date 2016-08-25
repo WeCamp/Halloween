@@ -19,10 +19,10 @@ return [
             'page::play' => 'templates/action/play.phtml',
         ],
         'paths' => [
-            'app'     => ['templates/app'],
-            'layout'  => ['templates/layout'],
-            'include' => ['templates/include'],
-            'error'   => ['templates/error'],
+//            'app'     => ['templates/app'],
+//            'layout'  => ['templates/layout'],
+//            'include' => ['templates/include'],
+//            'error'   => ['templates/error'],
         ],
     ],
     'view_helpers' => [

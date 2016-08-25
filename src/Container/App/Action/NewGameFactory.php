@@ -8,7 +8,7 @@ use Zend\Expressive\Template\TemplateRendererInterface;
  *
  * @package Prooph\ProophessorDo\Container\App\Action
  */
-final class PlayFactory
+final class NewGameFactory
 {
     /**
      * @param ContainerInterface $container
