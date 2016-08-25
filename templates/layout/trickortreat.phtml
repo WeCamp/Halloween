@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trick or Treat</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<div class="neutral-background"></div>
+<div id="el">
+<section class="topbar">
+
+    <div class="l-container">
+
+        <div class="logo">
+            <img src="/assets/img/trickortreat_logo.png" alt="">
+        </div>
+
+        <div class="round-notation">
+            Round #{{ Game.Round.no }}
+        </div>
+
+    </div>
+</section>
+
+<section class="player-names">
+    <div class="l-container" v-show="Game.gameState == 'signIn'">
+            <input type="text" placeholder="Player one" v-model="Game.Players.PlayerOne.name">
+            <input type="text" placeholder="Player two" v-model="Game.Players.PlayerTwo.name">
+            <button name="submit" v-on:click="initialiseGame">Play</button>
+    </div>
+</section>
+
+<section class="l-container" v-show="Game.gameState == 'passToPlayer'">
+    {{#if Game.gameStatePlayerId == 1}}
+    {{ Game.Players.PlayerOne.name }} may choose the ingredients
+    {{/if}}
+    {{#if Game.gameStatePlayerId == 2}}
+    {{ Game.Players.PlayerOne.name }} may choose the ingredients
+    {{/if}}
+    <button name="submit" v-on:click="chooseIngredients">Go</button>
+</section>
+
+    <section class="l-container" v-show="Game.gameState == 'chooseIngredients'">
+        {{ Game.Players.PlayerOne.name }} choose your ingredients
+        <ul>
+            <li v-for="item in Game.Round.availableIngredients">
+                <label>
+                    <input type="checkbox" v-model="Game." /> {{ item.name }}
+                    <span></span>
+                </label>
+            </li>
+        </ul>
+        <button name="submit" v-on:click="confirmIngredients">Confirm</button>
+    </section>
+
+    <section class="l-container" v-show="Game.gameState == 'roundUp'">
+
+        <button name="submit" v-on:click="confirmIngredients">Confirm</button>
+    </section>
+
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/vue/1.0.26/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/vue.resource/0.9.3/vue-resource.min.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

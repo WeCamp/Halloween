@@ -1,0 +1,56 @@
+form {
+	max-width: 500px;
+	margin: 0px auto;
+}
+
+input {
+	border: 1px solid white;
+	width: 100%;
+	background: none;
+	padding: 20px;
+	margin-bottom: 10px;
+	color: white;
+	font-size: 1.5em;
+
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+button {
+	@extend input;
+	background-color: $green;
+	border: none;
+	max-width: 300px;
+	display: block;
+	margin: 30px auto;
+
+	&:hover {
+		background-color: darken($green, 10%);
+	}
+}
+
+input[type=checkbox]  {
+	display: none;
+}
+
+label input[type=checkbox] ~ span {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	//background: #fff;
+	border: 1px solid #888;
+	padding: 1px;
+	height: 20px;
+	width: 20px;
+}
+
+label input[type=checkbox]:checked ~ span {
+	/* image: Picol.org, cc-by 3.0, https://commons.wikimedia.org/wiki/File:Accept_Picol_icon.svg */
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M14 18L26 6l4 4-16 16L4 16l4-4z"/></svg>');
+	background-size: 100%;
+}

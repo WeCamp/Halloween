@@ -1,0 +1,137 @@
+/* Use this mixin to reset your grid by example for your mobile grid */
+/* The clearfix mixin is necessary for the floats */
+html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+* {
+  box-sizing: border-box; }
+
+html {
+  font: 16px sans-serif;
+  -webkit-font-size-adjust: 100%; }
+
+body {
+  line-height: 1.5em; }
+  @media only screen and (min-width: 600px) {
+    body {
+      font-size: 17px; } }
+  @media only screen and (min-width: 750px) {
+    body {
+      font-size: 18px; } }
+
+p {
+  margin-bottom: 1.25em; }
+
+@media only screen and (min-width: 600px) {
+  .l-full {
+    float: left;
+    width: 95.83333%;
+    margin-left: 2.08333%;
+    margin-right: 2.08333%; } }
+
+@media only screen and (min-width: 600px) {
+  .l-two-third {
+    float: left;
+    width: 62.5%;
+    margin-left: 2.08333%;
+    margin-right: 2.08333%; } }
+
+@media only screen and (min-width: 600px) {
+  .l-half {
+    float: left;
+    width: 45.83333%;
+    margin-left: 2.08333%;
+    margin-right: 2.08333%; } }
+
+@media only screen and (min-width: 600px) {
+  .l-one-third {
+    float: left;
+    width: 29.16667%;
+    margin-left: 2.08333%;
+    margin-right: 2.08333%; } }
+
+.l-first {
+  clear: left; }
+
+div.l-container {
+  *zoom: 1;
+  max-width: 62.5em;
+  margin: auto;
+  padding: 2.5em; }
+  div.l-container:before, div.l-container:after {
+    display: block;
+    height: 0 !important;
+    line-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    content: "."; }
+  div.l-container:after {
+    clear: both; }
+
+.neutral-background {
+  position: absolute;
+  z-index: -1;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: url(../img/bg.jpg) no-repeat center center fixed;
+  background-size: cover; }
+
+.logo {
+  float: left; }
+
+.round-notation {
+  float: right;
+  color: white;
+  font-size: 2em;
+  padding-top: 60px; }
+
+form {
+  max-width: 500px;
+  margin: 0px auto; }
+
+input, button {
+  border: 1px solid white;
+  width: 100%;
+  background: none;
+  padding: 20px;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px; }
+  input:focus, button:focus {
+    outline: none; }
+
+button {
+  background-color: #52BF4E;
+  border: none;
+  max-width: 300px;
+  display: block;
+  margin: 30px auto; }
+  button:hover {
+    background-color: #3ea03a; }
+
+input[type=checkbox], button[type=checkbox] {
+  display: none; }
+
+label input[type=checkbox] ~ span, label button[type=checkbox] ~ span {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #888;
+  padding: 1px;
+  height: 20px;
+  width: 20px; }
+
+label input[type=checkbox]:checked ~ span, label button[type=checkbox]:checked ~ span {
+  /* image: Picol.org, cc-by 3.0, https://commons.wikimedia.org/wiki/File:Accept_Picol_icon.svg */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M14 18L26 6l4 4-16 16L4 16l4-4z"/></svg>');
+  background-size: 100%; }
