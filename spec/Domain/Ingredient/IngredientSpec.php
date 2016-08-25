@@ -18,4 +18,6 @@ class IngredientSpec extends ObjectBehavior
 
         $this->shouldHaveRecorded(IngredientWasAdded::withData($ingredientId, 'pepper'));
     }
+
+
 }

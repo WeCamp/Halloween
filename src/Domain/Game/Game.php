@@ -2,7 +2,11 @@
 
 namespace Halloween\TrickOrTreat\Domain\Game;
 
+use Halloween\TrickOrTreat\Domain\Game\Event\CurrentRoundHasBeenFinished;
 use Halloween\TrickOrTreat\Domain\Game\Event\GameWasInitialised;
+use Halloween\TrickOrTreat\Domain\Game\Event\GameWasStarted;
+use Halloween\TrickOrTreat\Domain\Game\Event\PlayerOneHasEatenHisMeal;
+use Halloween\TrickOrTreat\Domain\Game\Event\PlayerTwoHasEatenHisMeal;
 use Prooph\EventSourcing\AggregateRoot;
 
 final class Game extends AggregateRoot
@@ -11,6 +15,7 @@ final class Game extends AggregateRoot
      * @var GameId
      */
     private $gameId;
+
     /**
      * @var Player
      */
@@ -20,6 +25,21 @@ final class Game extends AggregateRoot
      * @var Player
      */
     private $playerTwo;
+
+    /**
+     *  @var int
+     */
+    private $roundNumber = 0;
+
+    /**
+     * boolean
+     */
+    private $playerOneAte = false;
+
+    /**
+     * boolean
+     */
+    private $playerTwoAte = false;
 
     /**
      * @return string
@@ -44,13 +64,69 @@ final class Game extends AggregateRoot
         return $game;
     }
 
+    public function start()
+    {
+        $this->recordThat(GameWasStarted::withId($this->gameId));
+    }
+
+    public function playerOneAteMeal()
+    {
+        $this->recordThat(PlayerOneHasEatenHisMeal::inRound($this->gameId, $this->roundNumber));
+    }
+
+    public function playerTwoAteMeal()
+    {
+        $this->recordThat(PlayerTwoHasEatenHisMeal::inRound($this->gameId, $this->roundNumber));
+    }
+
     /**
      * @param GameWasInitialised $event
      */
     protected function whenGameWasInitialised(GameWasInitialised $event)
     {
-        $this->gameId    = $event->aggregateId();
+        $this->gameId    = $event->gameId();
         $this->playerOne = $event->playerOne();
         $this->playerTwo = $event->playerTwo();
+    }
+
+    /**
+     * @param GameWasStarted $event
+     */
+    protected function whenGameWasStarted(GameWasStarted $event)
+    {
+        $this->roundNumber = $this->roundNumber + 1;
+    }
+
+    /**
+     * @param PlayerOneHasEatenHisMeal $event
+     */
+    protected function whenPlayerOneHasEatenHisMeal(PlayerOneHasEatenHisMeal $event)
+    {
+        $this->playerOneAte = true;
+    }
+
+    /**
+     * @param PlayerTwoHasEatenHisMeal $event
+     */
+    protected function whenPlayerTwoHasEatenHisMeal(PlayerTwoHasEatenHisMeal $event)
+    {
+        $this->playerTwoAte = true;
+    }
+
+
+    public function finishRound()
+    {
+        if(!$this->playerOneAte || !$this->playerTwoAte){
+            throw new \LogicException('Not all players ate their meals');
+        }
+
+        $this->recordThat(CurrentRoundHasBeenFinished::withId($this->gameId, $this->roundNumber));
+    }
+
+    protected function whenCurrentRoundHasBeenFinished(CurrentRoundHasBeenFinished $event)
+    {
+        $this->roundNumber = $this->roundNumber + 1;
+        $this->playerOneAte = false;
+        $this->playerTwoAte = false;
     }
 }
