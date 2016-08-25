@@ -35,10 +35,12 @@
         "prooph/event-sourcing" : "^4.0",
         "prooph/event-store" : "^6.0",
         "prooph/event-store-bus-bridge" : "^2.0",
+        "prooph/event-store-mongodb-adapter": "^2.0",
         "prooph/psr7-middleware": "^0.1",
         "prooph/service-bus" : "^5.0",
 		"rhumsaa/uuid": "^2.8",
-		"zendframework/zend-expressive-zendviewrenderer": "^1.1"
+		"zendframework/zend-expressive-zendviewrenderer": "^1.1",
+        "sandrokeil/interop-config": "^0.3.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
