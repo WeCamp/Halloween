@@ -35,6 +35,7 @@
         "prooph/event-sourcing" : "^4.0",
         "prooph/event-store" : "^6.0",
         "prooph/event-store-bus-bridge" : "^2.0",
+        "prooph/event-store-mongodb-adapter": "^2.0",
         "prooph/psr7-middleware": "^0.1",
         "prooph/service-bus" : "^5.0",
 		"rhumsaa/uuid": "^2.8",
