@@ -35,7 +35,7 @@ window.onload = function () {
                 this.$http.post('/initialise-game', JSON.stringify(json_data))
                     .then(
                         function (response) {
-                            this.$set('Game.id', response.data.Game.gameId);
+                            this.$set('Game.id', response.data.gameId);
                             this.$set('Game.gameState', "passToPlayer");
                             this.$set('Game.Players.PlayerOne.Name', response.data.playerOne);
                             this.$set('Game.Players.PlayerTwo.Name', response.data.playerTwo);
