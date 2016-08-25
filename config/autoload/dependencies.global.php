@@ -28,6 +28,7 @@ return [
             \Halloween\TrickOrTreat\Domain\Game\GameRepository::class => \Halloween\TrickOrTreat\Container\Infrastructure\Game\EventStoreGameRepositoryFactory::class,
             \Halloween\TrickOrTreat\Domain\Ingredient\Handler\AddIngredientHandler::class => \Halloween\TrickOrTreat\Container\Domain\Ingredient\Handler\AddIngredientHandlerFactory::class,
             \Halloween\TrickOrTreat\Domain\Game\Handler\InitialiseGameHandler::class => \Halloween\TrickOrTreat\Container\Domain\Game\Handler\InitialiseGameHandlerFactory::class,
+            \Halloween\TrickOrTreat\Domain\Game\Handler\FinishRoundHandler::class => \Halloween\TrickOrTreat\Container\Domain\Game\Handler\FinishRoundHandlerFactory::class,
             \Halloween\TrickOrTreat\Projection\Ingredient\IngredientProjector::class => \Halloween\TrickOrTreat\Container\Projection\Ingredient\IngredientProjectorFactory::class
         ],
     ],

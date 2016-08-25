@@ -1,4 +1,4 @@
-<?php
+g<?php
 
 return [
     'dependencies' => [
@@ -60,5 +60,11 @@ return [
             'middleware' => \Halloween\TrickOrTreat\App\Action\ConfirmDidNotFinishedDish::class,
             'allowed_methods' => ['POST'],
         ],
+//        [
+//            'name' => 'test',
+//            'path' => '/test',
+//            'middleware' => \Halloween\TrickOrTreat\App\Action\FinishRound::class,
+//            'allowed_methods' => ['GET'],
+//        ],
     ],
 ];
