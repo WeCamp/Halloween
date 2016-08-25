@@ -1,12 +1,11 @@
 <?php
 namespace Halloween\TrickOrTreat\App\Action;
 
-use Halloween\TrickOrTreat\Domain\Ingredient\Command\AddIngredient;
-use Halloween\TrickOrTreat\Domain\Ingredient\IngredientId;
+use Halloween\TrickOrTreat\Domain\Game\GameId;
 use Prooph\ServiceBus\CommandBus;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Zend\Diactoros\Response\HtmlResponse;
+use Zend\Diactoros\Response\JsonResponse;
 
 final class FinishRound
 {
@@ -24,22 +23,24 @@ final class FinishRound
     }
 
     /**
-     * @param RequestInterface  $request
+     * @param RequestInterface $request
      * @param ResponseInterface $response
-     * @param callable          $next
+     * @param callable $next
      *
      * @return ResponseInterface
      */
     public function __invoke(RequestInterface $request, ResponseInterface $response, callable $next)
     {
-        var_dump('body: ', $request->getBody());
-        exit;
+        $json = json_decode($request->getBody());
 
-
-        $this->commandBus->dispatch(\Halloween\TrickOrTreat\Domain\Game\Command\FinishRound::withPlayers());
-
-        return new HtmlResponse(
-            'Hello WeCamp'
+        $this->commandBus->dispatch(
+            \Halloween\TrickOrTreat\Domain\Game\Command\FinishRound::withPlayers(
+                GameId::fromString($json->gameId),
+                $json->playerOneResult,
+                $json->playerTwoResult
+            )
         );
+
+        return new JsonResponse('', 202);
     }
 }

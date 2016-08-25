@@ -23,6 +23,7 @@ return [
             \Halloween\TrickOrTreat\App\Action\Play::class => \Halloween\TrickOrTreat\Container\App\Action\NewGameFactory::class,
             \Halloween\TrickOrTreat\App\Action\Home::class => \Halloween\TrickOrTreat\Container\App\Action\HomeFactory::class,
             \Halloween\TrickOrTreat\App\Action\InitialiseGame::class => \Halloween\TrickOrTreat\Container\App\Action\InitialiseGameFactory::class,
+            \Halloween\TrickOrTreat\App\Action\FinishRound::class => \Halloween\TrickOrTreat\Container\App\Action\FinishRoundFactory::class,
             // App Stuff
             \Halloween\TrickOrTreat\Domain\Ingredient\AvailableIngredients::class => \Halloween\TrickOrTreat\Container\Infrastructure\Ingredient\EventStoreAvailableIngredientsFactory::class,
             \Halloween\TrickOrTreat\Domain\Game\GameRepository::class => \Halloween\TrickOrTreat\Container\Infrastructure\Game\EventStoreGameRepositoryFactory::class,

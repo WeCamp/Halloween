@@ -2,18 +2,19 @@
 
 namespace Halloween\TrickOrTreat\Container\App\Action;
 
-use Halloween\TrickOrTreat\App\Action\Home;
+use Halloween\TrickOrTreat\App\Action\FinishRound;
 use Interop\Container\ContainerInterface;
 use Prooph\ServiceBus\CommandBus;
 
-final class HomeFactory
+final class FinishRoundFactory
 {
     /**
      * @param ContainerInterface $container
-     * @return Home
+     *
+     * @return FinishRound
      */
     public function __invoke(ContainerInterface $container)
     {
-        return new Home($container->get(CommandBus::class));
+        return new FinishRound($container->get(CommandBus::class));
     }
 }
