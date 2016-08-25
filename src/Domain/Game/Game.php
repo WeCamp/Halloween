@@ -3,7 +3,8 @@
 namespace Halloween\TrickOrTreat\Domain\Game;
 
 use Halloween\TrickOrTreat\Domain\Game\Event\CurrentRoundHasBeenFinished;
-use Halloween\TrickOrTreat\Domain\Game\Event\GameHasFinished;
+use Halloween\TrickOrTreat\Domain\Game\Event\GameHasFinishedWithADraw;
+use Halloween\TrickOrTreat\Domain\Game\Event\GameHasFinishedWithWinner;
 use Halloween\TrickOrTreat\Domain\Game\Event\GameWasInitialised;
 use Halloween\TrickOrTreat\Domain\Game\Event\GameWasStarted;
 use Halloween\TrickOrTreat\Domain\Game\Event\PlayerOneHasEatenHisMeal;
@@ -33,16 +34,6 @@ final class Game extends AggregateRoot
     private $roundNumber = 0;
 
     /**
-     * boolean
-     */
-    private $playerOneAte = false;
-
-    /**
-     * boolean
-     */
-    private $playerTwoAte = false;
-
-    /**
      * @return string
      */
     protected function aggregateId()
@@ -65,37 +56,39 @@ final class Game extends AggregateRoot
         return $game;
     }
 
-    public function playerOneAteMeal()
+    public function finishRound(RoundResults $roundResults)
     {
-        $this->recordThat(PlayerOneHasEatenHisMeal::inRound($this->gameId, $this->roundNumber));
-    }
+        $playerOneResult = $roundResults->playerOneResult();
+        $playerTwoResult = $roundResults->playerTwoResult();
 
-    public function playerTwoAteMeal()
-    {
-        $this->recordThat(PlayerTwoHasEatenHisMeal::inRound($this->gameId, $this->roundNumber));
-    }
+        if ($playerOneResult && $playerTwoResult) {
+            $this->recordThat(CurrentRoundHasBeenFinished::withId($this->gameId, $this->roundNumber));
 
-    public function finishRound()
-    {
-        if (!$this->playerOneAte || !$this->playerTwoAte) {
-            throw new \LogicException('Not all players ate their meals');
+            return;
         }
 
-        $this->recordThat(CurrentRoundHasBeenFinished::withId($this->gameId, $this->roundNumber));
+        if (!$playerOneResult && !$playerTwoResult) {
+            $this->recordThat(GameHasFinishedWithADraw::inRound($this->gameId, $this->roundNumber));
+
+            return;
+        }
+
+        if ($playerOneResult) {
+            $this->recordThat(GameHasFinishedWithWinner::inRound($this->gameId, $this->playerOne, $this->roundNumber));
+
+            return;
+        }
+
+        $this->recordThat(GameHasFinishedWithWinner::inRound($this->gameId, $this->playerTwo, $this->roundNumber));
     }
 
-    public function playerOneQuits()
-    {
-        $this->recordThat(GameHasFinished::withWinnerInRound($this->gameId, $this->playerTwo, $this->roundNumber));
-    }
-
-    protected function whenGameHasFinished(GameHasFinished $event)
+    protected function whenGameHasFinishedWithWinner(GameHasFinishedWithWinner $event)
     {
     }
 
-    public function playerTwoQuits()
+
+    protected function whenGameHasFinishedWithADraw(GameHasFinishedWithADraw $event)
     {
-        $this->recordThat(GameHasFinished::withWinnerInRound($this->gameId, $this->playerOne, $this->roundNumber));
     }
 
     /**
@@ -103,35 +96,17 @@ final class Game extends AggregateRoot
      */
     protected function whenGameWasInitialised(GameWasInitialised $event)
     {
-        $this->gameId    = $event->gameId();
-        $this->playerOne = $event->playerOne();
-        $this->playerTwo = $event->playerTwo();
+        $this->gameId      = $event->gameId();
+        $this->playerOne   = $event->playerOne();
+        $this->playerTwo   = $event->playerTwo();
         $this->roundNumber = 1;
     }
-
-    /**
-     * @param PlayerOneHasEatenHisMeal $event
-     */
-    protected function whenPlayerOneHasEatenHisMeal(PlayerOneHasEatenHisMeal $event)
-    {
-        $this->playerOneAte = true;
-    }
-
-    /**
-     * @param PlayerTwoHasEatenHisMeal $event
-     */
-    protected function whenPlayerTwoHasEatenHisMeal(PlayerTwoHasEatenHisMeal $event)
-    {
-        $this->playerTwoAte = true;
-    }
-
+    
     /**
      * @param CurrentRoundHasBeenFinished $event
      */
     protected function whenCurrentRoundHasBeenFinished(CurrentRoundHasBeenFinished $event)
     {
-        $this->roundNumber  = $this->roundNumber + 1;
-        $this->playerOneAte = false;
-        $this->playerTwoAte = false;
+        $this->roundNumber = $this->roundNumber + 1;
     }
 }
