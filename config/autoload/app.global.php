@@ -26,23 +26,18 @@ return [
                 'message_factory' => \Prooph\Common\Messaging\FQCNMessageFactory::class,
             ],
         ],
-//        'event_store' => [
-//            'plugins' => [
-//                \Prooph\EventStoreBusBridge\EventPublisher::class,
-//                \Prooph\EventStoreBusBridge\TransactionManager::class,
-//            ],
-//            //Repository configuration for EventStoreTodoList
-//            'todo_list' => [
-//                'repository_class' => \Prooph\ProophessorDo\Infrastructure\Repository\EventStoreTodoList::class,
-//                'aggregate_type' => \Prooph\ProophessorDo\Model\Todo\Todo::class,
-//                'aggregate_translator' => \Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator::class,
-//            ],
-//            'user_collection' => [
-//                'repository_class' => \Prooph\ProophessorDo\Infrastructure\Repository\EventStoreUserCollection::class,
-//                'aggregate_type' => \Prooph\ProophessorDo\Model\User\User::class,
-//                'aggregate_translator' => \Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator::class
-//            ],
-//        ],
+        'event_store' => [
+            'plugins' => [
+                \Prooph\EventStoreBusBridge\EventPublisher::class,
+                \Prooph\EventStoreBusBridge\TransactionManager::class,
+            ],
+            //Repository configuration for EventStoreTodoList
+            'available_ingredients' => [
+                'repository_class' => Halloween\TrickOrTreat\Infrastructure\Repository\EventStoreAvailableIngredients::class,
+                'aggregate_type' => Halloween\TrickOrTreat\Domain\Ingredient\Ingredient::class,
+                'aggregate_translator' => \Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator::class,
+            ]
+        ],
         'service_bus' => [
             'command_bus' => [
                 'router' => [
