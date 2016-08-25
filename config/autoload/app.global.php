@@ -31,10 +31,16 @@ return [
                 \Prooph\EventStoreBusBridge\EventPublisher::class,
                 \Prooph\EventStoreBusBridge\TransactionManager::class,
             ],
-            //Repository configuration for EventStoreTodoList
+            //Repository configuration for EventStoreAvailableIngredients
             'available_ingredients' => [
                 'repository_class' => Halloween\TrickOrTreat\Infrastructure\Repository\EventStoreAvailableIngredients::class,
                 'aggregate_type' => Halloween\TrickOrTreat\Domain\Ingredient\Ingredient::class,
+                'aggregate_translator' => \Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator::class,
+            ],
+            //Repository configuration for EventStoreGame
+            'game' => [
+                'repository_class' => Halloween\TrickOrTreat\Infrastructure\Repository\EventStoreGame::class,
+                'aggregate_type' => Halloween\TrickOrTreat\Domain\Game\Game::class,
                 'aggregate_translator' => \Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator::class,
             ]
         ],
@@ -52,10 +58,9 @@ return [
                 ],
                 'router' => [
                     'routes' => [
-//                        \Prooph\ProophessorDo\Model\Todo\Event\TodoWasMarkedAsDone::class => [
-//                            \Prooph\ProophessorDo\Projection\Todo\TodoProjector::class,
-//                            \Prooph\ProophessorDo\Projection\User\UserProjector::class,
-//                        ],
+                        \Halloween\TrickOrTreat\Domain\Ingredient\Event\IngredientWasAdded::class => [
+                            \Halloween\TrickOrTreat\Projection\Ingredient\IngredientProjector::class
+                        ],
                     ],
                 ],
             ],
