@@ -6,7 +6,7 @@ use Halloween\TrickOrTreat\Domain\Game\GameId;
 use Halloween\TrickOrTreat\Domain\Game\Player;
 use Prooph\EventSourcing\AggregateChanged;
 
-final class GameHasFinished extends AggregateChanged
+final class GameHasFinishedWithWinner extends AggregateChanged
 {
     /**
      * @param GameId  $gameId
@@ -15,7 +15,7 @@ final class GameHasFinished extends AggregateChanged
      *
      * @return static
      */
-    public static function withWinnerInRound(GameId $gameId, Player $player, $roundNumber)
+    public static function inRound(GameId $gameId, Player $player, $roundNumber)
     {
         return self::occur($gameId->toString(), ['winner' => $player->name(), 'rounumber' => (int)$roundNumber]);
     }
