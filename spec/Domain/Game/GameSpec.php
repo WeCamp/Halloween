@@ -30,14 +30,6 @@ class GameSpec extends ObjectBehavior
         $this->shouldHaveRecorded(GameWasInitialised::class);
     }
 
-    function it_should_be_startable()
-    {
-        $this->start();
-
-        $this->shouldHaveRecorded(GameWasStarted::class);
-
-    }
-
     function it_should_confirm_the_player_one_ate_the_mail()
     {
         $this->playerOneAteMeal();
@@ -72,7 +64,6 @@ class GameSpec extends ObjectBehavior
     }
 
     function it_should_end_a_game_when_player_one_quits() {
-        $this->start();
         $this->playerOneQuits();
 
         $this->shouldHaveRecorded(GameHasFinished::withWinnerInRound($this->gameId, new Player('Petar'), 1));
@@ -80,7 +71,6 @@ class GameSpec extends ObjectBehavior
 
 
     function it_should_end_a_game_when_player_two_quits() {
-        $this->start();
         $this->playerTwoQuits();
 
         $this->shouldHaveRecorded(GameHasFinished::withWinnerInRound($this->gameId, new Player('Mitchel'), 1));

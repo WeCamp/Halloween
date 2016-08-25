@@ -65,11 +65,6 @@ final class Game extends AggregateRoot
         return $game;
     }
 
-    public function start()
-    {
-        $this->recordThat(GameWasStarted::withId($this->gameId));
-    }
-
     public function playerOneAteMeal()
     {
         $this->recordThat(PlayerOneHasEatenHisMeal::inRound($this->gameId, $this->roundNumber));
@@ -111,14 +106,7 @@ final class Game extends AggregateRoot
         $this->gameId    = $event->gameId();
         $this->playerOne = $event->playerOne();
         $this->playerTwo = $event->playerTwo();
-    }
-
-    /**
-     * @param GameWasStarted $event
-     */
-    protected function whenGameWasStarted(GameWasStarted $event)
-    {
-        $this->roundNumber = $this->roundNumber + 1;
+        $this->roundNumber = 1;
     }
 
     /**
