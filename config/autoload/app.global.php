@@ -62,6 +62,18 @@ return [
                         \Halloween\TrickOrTreat\Domain\Ingredient\Event\IngredientWasAdded::class => [
                             \Halloween\TrickOrTreat\Projection\Ingredient\IngredientProjector::class
                         ],
+                        \Halloween\TrickOrTreat\Domain\Game\Event\GameWasInitialised::class => [
+                            \Halloween\TrickOrTreat\Projection\Game\GameProjector::class
+                        ],
+                        \Halloween\TrickOrTreat\Domain\Game\Event\CurrentRoundHasBeenFinished::class => [
+                            \Halloween\TrickOrTreat\Projection\Game\GameProjector::class
+                        ],
+                        \Halloween\TrickOrTreat\Domain\Game\Event\GameHasFinishedWithADraw::class => [
+                            \Halloween\TrickOrTreat\Projection\Game\GameProjector::class
+                        ],
+                        \Halloween\TrickOrTreat\Domain\Game\Event\GameHasFinishedWithWinner::class => [
+                            \Halloween\TrickOrTreat\Projection\Game\GameProjector::class
+                        ],
                     ],
                 ],
             ],
