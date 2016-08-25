@@ -3,13 +3,14 @@
 namespace Halloween\TrickOrTreat\Infrastructure\Repository;
 
 use Prooph\EventStore\Aggregate\AggregateRepository;
+use Halloween\TrickOrTreat\Domain\Game\GameRepository;
 use Halloween\TrickOrTreat\Domain\Game\Game;
 use Halloween\TrickOrTreat\Domain\Game\GameId;
 
 /**
  * Class EventStoreAvailableIngredients
  */
-final class EventStoreGame extends AggregateRepository implements Game
+final class EventStoreGameRepository extends AggregateRepository implements GameRepository
 {
     /**
      * @param Game $game

@@ -1,6 +1,6 @@
 <?php
 
-namespace Halloween\TrickOrTreat\Container\Domain\Ingredient;
+namespace Halloween\TrickOrTreat\Container\Domain\Ingredient\Handler;
 
 use Halloween\TrickOrTreat\Domain\Ingredient\AvailableIngredients;
 use Halloween\TrickOrTreat\Domain\Ingredient\Handler\AddIngredientHandler;

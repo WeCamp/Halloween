@@ -38,8 +38,8 @@ return [
                 'aggregate_translator' => \Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator::class,
             ],
             //Repository configuration for EventStoreGame
-            'game' => [
-                'repository_class' => Halloween\TrickOrTreat\Infrastructure\Repository\EventStoreGame::class,
+            'game_repository' => [
+                'repository_class' => Halloween\TrickOrTreat\Infrastructure\Repository\EventStoreGameRepository::class,
                 'aggregate_type' => Halloween\TrickOrTreat\Domain\Game\Game::class,
                 'aggregate_translator' => \Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator::class,
             ]
@@ -48,7 +48,8 @@ return [
             'command_bus' => [
                 'router' => [
                     'routes' => [
-                        \Halloween\TrickOrTreat\Domain\Ingredient\Command\AddIngredient::class => \Halloween\TrickOrTreat\Domain\Ingredient\Handler\AddIngredientHandler::class
+                        \Halloween\TrickOrTreat\Domain\Ingredient\Command\AddIngredient::class => \Halloween\TrickOrTreat\Domain\Ingredient\Handler\AddIngredientHandler::class,
+                        \Halloween\TrickOrTreat\Domain\Game\Command\InitialiseGame::class => \Halloween\TrickOrTreat\Domain\Game\Handler\InitialiseGameHandler::class
                     ],
                 ],
             ],
