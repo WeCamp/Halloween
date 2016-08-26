@@ -9,6 +9,7 @@
   margin: auto;
   width: 250px;
 }
+[v-cloak] { display:none; }
 
 .ingredients-list {
   display: inline-block;
@@ -34,5 +35,4 @@
       }
     }
   }
-
 }

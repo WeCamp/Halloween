@@ -32,4 +32,7 @@ button {
 	&:hover {
 		background-color: darken($green, 10%);
 	}
+	&.btn-red {
+		background-color: $red;
+	}
 }

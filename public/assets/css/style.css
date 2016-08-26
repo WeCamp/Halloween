@@ -118,6 +118,8 @@ button {
   margin: 30px auto; }
   button:hover {
     background-color: #3ea03a; }
+  button.btn-red {
+    background-color: #ff4d39; }
 
 body {
   color: white;
@@ -126,6 +128,9 @@ body {
 .instruction-container {
   margin: auto;
   width: 250px; }
+
+[v-cloak] {
+  display: none; }
 
 .ingredients-list {
   display: inline-block;

@@ -14,7 +14,7 @@
 <body>
 
 <div class="neutral-background"></div>
-<div id="el">
+<div id="el" v-cloak>
     <section class="topbar">
 
         <div class="l-container">
@@ -65,22 +65,8 @@
 
     <section class="l-container" v-show="gameState == 'confirmRoundResult'">
         <div class="instruction-container">
-        <label>
-            <input type="checkbox"
-                   v-model="roundResult.playerOneResult"
-            />{{ Players.PlayerOne.name }}
-            <span></span>
-        </label>
-        <br/>
-        <label>
-            <input type="checkbox"
-                   v-model="roundResult.playerTwoResult"
-                    v-bind:true-value="true"
-                    v-bind:false-value="false"
-            />
-            {{ Players.PlayerTwo.name }}
-            <span></span>
-        </label>
+        <button v-bind:class="roundResult.playerOneResult?'':'btn-red'" v-on:click="roundResult.playerOneResult = !roundResult.playerOneResult">Click if {{ Players.PlayerOne.name }} has eaten</button>
+        <button v-bind:class="roundResult.playerTwoResult?'':'btn-red'" v-on:click="roundResult.playerTwoResult = !roundResult.playerTwoResult">Click if {{ Players.PlayerTwo.name }} has eaten</button>
 
         <button name="submit" v-on:click="finishRound">Finish Round</button>
         </div>
