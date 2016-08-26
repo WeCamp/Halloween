@@ -17,7 +17,7 @@ final class GameHasFinishedWithWinner extends AggregateChanged
      */
     public static function inRound(GameId $gameId, Player $player, $roundNumber)
     {
-        return self::occur($gameId->toString(), ['winner' => $player->name(), 'rounumber' => (int)$roundNumber]);
+        return self::occur($gameId->toString(), ['winner' => $player->name(), 'roundNumber' => (int)$roundNumber]);
     }
 
     /**
