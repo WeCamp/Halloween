@@ -2,34 +2,39 @@ window.onload = function () {
 
     var playerOne = {
         id: 1,
-        name: "Petar",
-        isGameOver: false,
+        name: "",
         alreadyChosenIngredients: [],
         chosenIngredients: []
     };
     var playerTwo = {
         id: 2,
-        name: "Jenny",
-        isGameOver: false,
+        name: "",
         alreadyChosenIngredients: [],
         chosenIngredients: []
     };
-    var roundResult = {
-        playerOneResult: false,
-        playerTwoResult: true
-    };
-    var game = {
-        gameId: null,
-        gameState: "confirmRoundResult",
-        gameCurrentPlayer: playerOne,
-        roundNo: 1,
-        roundResult: roundResult,
-        availableIngredients: [],
-        Players: {
-            PlayerOne: playerOne,
-            PlayerTwo: playerTwo
-        }
-    };
+
+    function getGame() {
+        playerOne.chosenIngredients = [];
+        playerTwo.chosenIngredients = [];
+        return {
+            gameId: null,
+            gameState: "signIn",
+            gameCurrentPlayer: playerOne,
+            roundNumber: 1,
+            roundResult: {
+                playerOneResult: false,
+                playerTwoResult: false
+            },
+            availableIngredients: [],
+            Players: {
+                PlayerOne: playerOne,
+                PlayerTwo: playerTwo
+            },
+            winner: false,
+        };
+    }
+
+    var game = getGame();
 
     var vm = new Vue({
         el: '#el',
@@ -56,32 +61,54 @@ window.onload = function () {
                     );
             },
             chooseIngredients: function () {
-                game.gameState = "chooseIngredients";
+                this.$set('gameState', "chooseIngredients");
             },
             confirmIngredients: function () {
                 if (this.gameCurrentPlayer.id == 1) {
-                    game.gameCurrentPlayer = this.Players.PlayerTwo;
-                    game.gameState = "chooseIngredients";
+                    this.$set('gameCurrentPlayer', this.Players.PlayerTwo);
+                    this.$set('gameState', "chooseIngredients");
                 } else {
-                    game.gameState = "confirmRoundResult";
+                    this.$set('gameState', "confirmRoundResult");
                 }
             },
             finishRound: function () {
-                console.log(this.roundResult);
                 var request = {
                     gameId: this.gameId,
                     playerOneResult: this.roundResult.playerOneResult,
                     playerTwoResult: this.roundResult.playerTwoResult
                 };
-                this.$http.post('/finish-round', JSON.stringify(request))
-                .then(
-                    function(response){
-
+                var response = {
+                    "gameId": "",
+                    "players": {
+                        "playerOne": "",
+                        "playerTwo": ""
                     },
-                    function(error){
+                    "finishedRound": 0,
+                    "status": "winner",
+                    "winner": "Rover"
+                };
 
-                    }
-                )
+                switch(response.status) {
+                    case 'unfinished' :
+                        this.$set('roundNumber', response.finishedRound + 1);
+                        this.$set('gameState', 'passToPlayer');
+                        this.$set('roundResult', {
+                            playerOneResult: false,
+                            playerTwoResult: false
+                        });
+                        break;
+                    case 'winner':
+                        this.$set('gameState', 'congratulateWinner');
+                        this.$set('winner', response.winner);
+                        break;
+                    case 'draw':
+                        this.$set('gameState', 'draw');
+                        break;
+                }
+            },
+
+            newGame: function() {
+                this.$data = getGame();
             }
         }
     })

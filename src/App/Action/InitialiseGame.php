@@ -51,22 +51,14 @@ final class InitialiseGame
 
     private function listIngredients()
     {
-        return [
-            [
-                'id' => 1,
-                'name' => 'spider',
+        $arr = [];
+        for($i=1;$i<=20;++$i){
+            $arr[] = [
+                'id' => $i,
+                'name' => 'spider '.$i,
                 'picture' => 'picturelocation_1'
-            ],
-            [
-                'id' => 2,
-                'name' => 'eyeball',
-                'picture' => 'picturelocation_2'
-            ],
-            [
-                'id' => 3,
-                'name' => 'scorpion',
-                'picture' => 'picturelocation_3'
-            ]
-        ];
+            ];
+        }
+        return $arr;
     }
 }

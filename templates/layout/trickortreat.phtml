@@ -24,7 +24,7 @@
             </div>
 
             <div class="round-notation">
-                Round #{{ roundNo }}
+                Round #{{ roundNumber }}
             </div>
 
         </div>
@@ -39,18 +39,23 @@
     </section>
 
     <section class="l-container" v-show="gameState == 'passToPlayer'">
-        {{ gameCurrentPlayer.name }} may choose the ingredients
+        <div class="instruction-container">
+            {{ gameCurrentPlayer.name }} may choose the ingredients
+        </div>
         <button name="submit" v-on:click="chooseIngredients">Go</button>
     </section>
 
     <div v-show="gameState == 'chooseIngredients'">
         <section class="l-container">
-            {{ gameCurrentPlayer.name }}, choose your ingredients
+            <div class="instruction-container">
+                {{ gameCurrentPlayer.name }}, choose your ingredients
+            </div>
             <ul>
-                <li v-for="item in availableIngredients">
+                <li class="ingredients-list" v-for="item in availableIngredients">
                     <label>
-                    <input type="checkbox" v-bind:value="item.id" v-model="gameCurrentPlayer.chosenIngredients"/> {{ item.name }}
-                    <span></span>
+                    <input type="checkbox" v-bind:value="item.id" v-model="gameCurrentPlayer.chosenIngredients" />
+                        <span>{{ item.name }}</span>
+                        <img src="http://placekitten.com/100/100" />
                     </label>
                 </li>
             </ul>
@@ -80,17 +85,20 @@
     </section>
 
     <section class="l-container" v-show="gameState == 'congratulateWinner'">
-        <label>
-            <input type="checkbox" v-model="Players.PlayerOne.isGameOver"/>
-            <span>{{ Players.PlayerOne.name }} </span>
-        </label>
-        <button href="/play" name="submit">New game, still hungry!</button>
+
+            <div class="instruction-container">Congratulations {{ winner }} </div>
+        <button href="/play" v-on:click="newGame">New game, still hungry!</button>
+    </section>
+
+    <section class="l-container" v-show="gameState == 'draw'">
+        <div class="instruction-container">Both not hungry?</div>
+        <button href="/play"  v-on:click="newGame">New game, still hungry!</button>
     </section>
 
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/vue/1.0.26/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/vue.resource/0.9.3/vue-resource.min.js"></script>
-<script src="/assets/js/main.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/vue.js"></script>
+<script type="text/javascript" src="/assets/js/vue-resource.min.js"></script>
+<script type="text/javascript" src="/assets/js/main.js"></script>
 </body>
 </html>
