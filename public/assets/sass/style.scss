@@ -13,7 +13,10 @@
     font-weight: bold;
   }
 }
-[v-cloak] { display:none; }
+
+[v-cloak] {
+  display: none;
+}
 
 .ingredients-list {
   display: inline-block;
@@ -22,6 +25,7 @@
   border: 1px solid grey;
   margin: 5px;
   padding: 5px;
+  border-radius: 20px;
 
   > label {
     display: block;
@@ -37,6 +41,9 @@
         color: #ff8b1c;
         font-weight: bold;
         text-shadow: 0px 0px 20px black;
+      }
+      ~ span {
+        font-weight: bold;
       }
     }
   }

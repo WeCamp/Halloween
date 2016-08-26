@@ -141,7 +141,8 @@ body {
   height: 150px;
   border: 1px solid grey;
   margin: 5px;
-  padding: 5px; }
+  padding: 5px;
+  border-radius: 5px; }
   .ingredients-list > label {
     display: block;
     height: 100%;
@@ -155,3 +156,5 @@ body {
         color: #ff8b1c;
         font-weight: bold;
         text-shadow: 0px 0px 20px black; }
+      .ingredients-list > label > input ~ span, .ingredients-list > label > button ~ span {
+        font-weight: bold; }
