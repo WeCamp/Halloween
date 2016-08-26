@@ -29,5 +29,17 @@ return [
             'middleware' => \Halloween\TrickOrTreat\App\Action\FinishRound::class,
             'allowed_methods' => ['POST'],
         ],
+        [
+            'name' => 'test',
+            'path' => '/test',
+            'middleware' => \Halloween\TrickOrTreat\App\Action\Test::class,
+            'allowed_methods' => ['GET'],
+        ],
+        [
+            'name' => 'get_current_game',
+            'path' => '/get-current-game',
+            'middleware' => \Halloween\TrickOrTreat\App\Action\GetCurrentGame::class,
+            'allowed_methods' => ['POST'],
+        ],
     ],
 ];
