@@ -63,7 +63,7 @@ final class InitialiseGame
                 'picture' => 'picturelocation_2'
             ],
             [
-                'id' => 2,
+                'id' => 3,
                 'name' => 'scorpion',
                 'picture' => 'picturelocation_3'
             ]
