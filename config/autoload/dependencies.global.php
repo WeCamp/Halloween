@@ -32,6 +32,8 @@ return [
             \Halloween\TrickOrTreat\Projection\Ingredient\IngredientProjector::class => \Halloween\TrickOrTreat\Container\Projection\Ingredient\IngredientProjectorFactory::class,
             \Halloween\TrickOrTreat\Projection\Game\GameProjector::class => \Halloween\TrickOrTreat\Container\Projection\Game\GameProjectorFactory::class,
             \Halloween\TrickOrTreat\Domain\Game\Handler\FinishRoundHandler::class => \Halloween\TrickOrTreat\Container\Domain\Game\Handler\FinishRoundHandlerFactory::class,
+            // Repository Stuff
+            \Halloween\TrickOrTreat\Infrastructure\Repository\MongodbGameRepository::class => \Halloween\TrickOrTreat\Container\App\Repository\MongodbGameRepositoryFactory::class
         ],
     ],
 ];
