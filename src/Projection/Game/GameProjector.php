@@ -36,8 +36,10 @@ final class GameProjector
                 'playerTwo' => $event->playerTwo()->name()
             ],
             'finishedRound' => 0,
-            'status' => 'unfinished'
+            'status' => 'unfinished',
+            'winner' => null
         ];
+
         $this->collection->insert($document);
     }
 
@@ -79,7 +81,8 @@ final class GameProjector
             ['gameId' => $event->gameId()->toString()],
             ['$set' => [
                 'finishedRound' => $event->roundNumber(),
-                'status' => 'winner'
+                'status' => 'winner',
+                'winner' => $event->winner()->name()
                 ]
             ]
         );
