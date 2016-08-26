@@ -152,5 +152,6 @@ body {
       top: -100px; }
       .ingredients-list > label > input:checked ~ span, .ingredients-list > label > button:checked ~ span {
         display: block;
-        color: red;
-        font-weight: bold; }
+        color: #ff8b1c;
+        font-weight: bold;
+        text-shadow: 0px 0px 20px black; }

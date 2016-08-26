@@ -34,8 +34,9 @@
       top: -100px;
       &:checked ~ span {
         display: block;
-        color: red;
+        color: #ff8b1c;
         font-weight: bold;
+        text-shadow: 0px 0px 20px black;
       }
     }
   }
