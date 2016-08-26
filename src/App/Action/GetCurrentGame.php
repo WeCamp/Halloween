@@ -2,8 +2,7 @@
 namespace Halloween\TrickOrTreat\App\Action;
 
 use Halloween\TrickOrTreat\Domain\Game\GameId;
-use Halloween\TrickOrTreat\Infrastructure\Repository\MongodbGameRepository;
-use Prooph\ServiceBus\CommandBus;
+use Halloween\TrickOrTreat\Projection\Game\MongodbGameReadRepository;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Zend\Diactoros\Response\JsonResponse;
@@ -11,14 +10,14 @@ use Zend\Diactoros\Response\JsonResponse;
 final class GetCurrentGame
 {
     /**
-     * @var MongodbGameRepository
+     * @var MongodbGameReadRepository
      */
     private $gameRepository;
 
     /**
-     * @param MongodbGameRepository $gameRepository
+     * @param MongodbGameReadRepository $gameRepository
      */
-    public function __construct(MongodbGameRepository $gameRepository)
+    public function __construct(MongodbGameReadRepository $gameRepository)
     {
         $this->gameRepository = $gameRepository;
     }

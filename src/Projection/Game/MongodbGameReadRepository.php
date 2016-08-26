@@ -1,14 +1,14 @@
 <?php
 
-namespace Halloween\TrickOrTreat\Infrastructure\Repository;
+namespace Halloween\TrickOrTreat\Projection\Game;
 
 use Halloween\TrickOrTreat\Domain\Game\GameId;
 use MongoClient;
 
 /**
- * Class MongodbGameRepository
+ * Class MongodbGameReadRepository
  */
-final class MongodbGameRepository
+final class MongodbGameReadRepository
 {
     /**
      * @var \MongoCollection $collection

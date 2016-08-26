@@ -2,6 +2,7 @@
 namespace Halloween\TrickOrTreat\App\Action;
 
 use Halloween\TrickOrTreat\Domain\Game\GameId;
+use Halloween\TrickOrTreat\Projection\Game\MongodbGameReadRepository;
 use Prooph\ServiceBus\CommandBus;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -15,11 +16,18 @@ final class Test
     private $commandBus;
 
     /**
-     * @param CommandBus $commandBus
+     * @var MongodbGameReadRepository
      */
-    public function __construct(CommandBus $commandBus)
+    private $gameRepository;
+
+    /**
+     * @param CommandBus $commandBus
+     * @param MongodbGameReadRepository $gameRepository
+     */
+    public function __construct(CommandBus $commandBus, MongodbGameReadRepository $gameRepository)
     {
         $this->commandBus = $commandBus;
+        $this->gameRepository = $gameRepository;
     }
 
     /**
@@ -31,21 +39,27 @@ final class Test
      */
     public function __invoke(RequestInterface $request, ResponseInterface $response, callable $next)
     {
+//        $gameId = GameId::fromString('206fed36-3aa7-4fbb-bf71-00a8f92cd0db');
+//
+//        $result = $this->gameRepository->getGame($gameId);
+//
+//
+//
         $gameId = GameId::generate();
 
         try {
             $command = \Halloween\TrickOrTreat\Domain\Game\Command\InitialiseGame::withPlayers(
                 $gameId,
-                'Mitchel',
-                'Marieke'
+                'Mitchel2',
+                'Marieke2'
             );
             $this->commandBus->dispatch($command);
 
             var_dump(
                 [
                     'gameId' => $gameId->toString(),
-                    'playerOne' => 'Mitchel',
-                    'playerTwo' => 'Marieke',
+                    'playerOne' => 'Mitchel2',
+                    'playerTwo' => 'Marieke2',
                     'ingredients' => $this->listIngredients()
                 ]
             );

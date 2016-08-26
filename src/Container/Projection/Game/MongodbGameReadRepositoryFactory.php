@@ -1,20 +1,19 @@
 <?php
 
-namespace Halloween\TrickOrTreat\Container\App\Action;
+namespace Halloween\TrickOrTreat\Container\Projection\Game;
 
-use Halloween\TrickOrTreat\App\Action\GetCurrentGame;
 use Halloween\TrickOrTreat\Projection\Game\MongodbGameReadRepository;
 use Interop\Container\ContainerInterface;
 
-final class GetCurrentGameFactory
+final class MongodbGameReadRepositoryFactory
 {
     /**
      * @param ContainerInterface $container
      *
-     * @return GetCurrentGame
+     * @return MongodbGameReadRepository
      */
     public function __invoke(ContainerInterface $container)
     {
-        return new GetCurrentGame($container->get(MongodbGameReadRepository::class));
+        return new MongodbGameReadRepository($container->get('mongo_client'));
     }
 }
