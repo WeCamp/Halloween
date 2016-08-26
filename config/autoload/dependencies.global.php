@@ -24,6 +24,7 @@ return [
             \Halloween\TrickOrTreat\App\Action\InitialiseGame::class => \Halloween\TrickOrTreat\Container\App\Action\InitialiseGameFactory::class,
             \Halloween\TrickOrTreat\App\Action\FinishRound::class => \Halloween\TrickOrTreat\Container\App\Action\FinishRoundFactory::class,
             \Halloween\TrickOrTreat\App\Action\Test::class => \Halloween\TrickOrTreat\Container\App\Action\TestFactory::class,
+            \Halloween\TrickOrTreat\App\Action\GetCurrentGame::class => \Halloween\TrickOrTreat\Container\App\Action\GetCurrentGameFactory::class,
             // App Stuff
             \Halloween\TrickOrTreat\Domain\Ingredient\AvailableIngredients::class => \Halloween\TrickOrTreat\Container\Infrastructure\Ingredient\EventStoreAvailableIngredientsFactory::class,
             \Halloween\TrickOrTreat\Domain\Game\GameRepository::class => \Halloween\TrickOrTreat\Container\Infrastructure\Game\EventStoreGameRepositoryFactory::class,
