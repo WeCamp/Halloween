@@ -55,7 +55,7 @@
                     <label>
                     <input type="checkbox" v-bind:value="item.id" v-model="gameCurrentPlayer.chosenIngredients" />
                         <span>{{ item.name }}</span>
-                        <img src="http://placekitten.com/100/100" />
+                        <!-- <img src="http://placekitten.com/100/100" />-->
                     </label>
                 </li>
             </ul>
@@ -64,6 +64,7 @@
     </div>
 
     <section class="l-container" v-show="gameState == 'confirmRoundResult'">
+        <div class="instruction-container">
         <label>
             <input type="checkbox"
                    v-model="roundResult.playerOneResult"
@@ -82,12 +83,13 @@
         </label>
 
         <button name="submit" v-on:click="finishRound">Finish Round</button>
+        </div>
     </section>
 
     <section class="l-container" v-show="gameState == 'congratulateWinner'">
 
             <div class="instruction-container">Congratulations {{ winner }} </div>
-        <button href="/play" v-on:click="newGame">New game, still hungry!</button>
+            <button href="/play" v-on:click="newGame">New game, still hungry!</button>
     </section>
 
     <section class="l-container" v-show="gameState == 'draw'">
