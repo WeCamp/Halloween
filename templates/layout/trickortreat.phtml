@@ -65,8 +65,14 @@
 
     <section class="l-container" v-show="gameState == 'confirmRoundResult'">
         <div class="instruction-container">
-        <button v-bind:class="roundResult.playerOneResult?'':'btn-red'" v-on:click="roundResult.playerOneResult = !roundResult.playerOneResult">Click if {{ Players.PlayerOne.name }} has eaten</button>
-        <button v-bind:class="roundResult.playerTwoResult?'':'btn-red'" v-on:click="roundResult.playerTwoResult = !roundResult.playerTwoResult">Click if {{ Players.PlayerTwo.name }} has eaten</button>
+        <button v-bind:class="roundResult.playerOneResult?'':'btn-red'" v-on:click="roundResult.playerOneResult = !roundResult.playerOneResult">
+            <span v-if="roundResult.playerOneResult">I, {{ Players.PlayerOne.name }}, have eaten</span>
+            <span v-else>I, {{ Players.PlayerOne.name }}, have not eaten</span>
+        </button>
+        <button v-bind:class="roundResult.playerTwoResult?'':'btn-red'" v-on:click="roundResult.playerTwoResult = !roundResult.playerTwoResult">
+            <span v-if="roundResult.playerTwoResult">I, {{ Players.PlayerTwo.name }}, have eaten</span>
+            <span v-else>I, {{ Players.PlayerTwo.name }}, have not eaten</span>
+        </button>
 
         <button name="submit" v-on:click="finishRound">Finish Round</button>
         </div>
