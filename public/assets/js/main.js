@@ -77,56 +77,43 @@ window.onload = function () {
                     playerOneResult: this.roundResult.playerOneResult,
                     playerTwoResult: this.roundResult.playerTwoResult
                 };
-                // var response = {
-                //     "gameId": "",
-                //     "players": {
-                //         "playerOne": "",
-                //         "playerTwo": ""
-                //     },
-                //     "finishedRound": 0,
-                //     "status": "winner",
-                //     "winner": "Rover"
-                // };
 
                 this.$http.post('/finish-round', JSON.stringify(request))
                     .then(
                         function () {
                             var json_data = {gameId: this.gameId};
-
-                            this.$http.post('get-current-game', JSON.stringify(json_data))
-                                .then(
-                                    function (response) {
-                                        switch (response.data.status) {
-                                            case 'unfinished' :
-                                                this.$set('roundNumber', response.data.finishedRound + 1);
-                                                this.$set('gameState', 'passToPlayer');
-                                                this.$set('roundResult', {
-                                                    playerOneResult: false,
-                                                    playerTwoResult: false
-                                                });
-                                                this.$set('Players.PlayerOne.chosenIngredients', []);
-                                                this.$set('Players.PlayerTwo.chosenIngredients', []);
-                                                this.$set('gameCurrentPlayer', this.Players.PlayerOne);
-                                                break;
-                                            case 'winner':
-                                                this.$set('gameState', 'congratulateWinner');
-                                                this.$set('winner', response.data.winner);
-                                                break;
-                                            case 'draw':
-                                                this.$set('gameState', 'draw');
-                                                break;
-                                        }
-                                    },
-                                    function (response) {
-                                        // error
-                                        alert(response.error);
-                                    }
-                                );
-                        },
-                        function () {
-                            alert(response.error);
+                            return this.$http.post('get-current-game', JSON.stringify(json_data))
                         }
                     )
+                    .then(
+                        function (response) {
+                            switch (response.data.status) {
+                                case 'unfinished' :
+                                    this.$set('roundNumber', response.data.finishedRound + 1);
+                                    this.$set('gameState', 'passToPlayer');
+                                    this.$set('roundResult', {
+                                        playerOneResult: false,
+                                        playerTwoResult: false
+                                    });
+                                    this.$set('Players.PlayerOne.chosenIngredients', []);
+                                    this.$set('Players.PlayerTwo.chosenIngredients', []);
+                                    this.$set('gameCurrentPlayer', this.Players.PlayerOne);
+                                    break;
+                                case 'winner':
+                                    this.$set('gameState', 'congratulateWinner');
+                                    this.$set('winner', response.data.winner);
+                                    break;
+                                case 'draw':
+                                    this.$set('gameState', 'draw');
+                                    break;
+                            }
+                        }
+                    ).fail(
+                    function (response) {
+                        // error
+                        alert(response.error);
+                    }
+                );
             },
             newGame: function () {
                 this.$data = getGame();
