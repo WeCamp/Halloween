@@ -80,7 +80,9 @@
 
     <section class="l-container" v-show="gameState == 'congratulateWinner'">
 
-            <div class="instruction-container">Congratulations {{ winner }} </div>
+            <div class="instruction-container">
+                <span class="winner">Congratulations {{ winner }}!</span>
+            </div>
             <button href="/play" v-on:click="newGame">New game, still hungry!</button>
     </section>
 

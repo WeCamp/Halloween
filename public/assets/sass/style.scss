@@ -8,6 +8,10 @@
 .instruction-container {
   margin: auto;
   width: 250px;
+  > .winner {
+    font-size: 25px;
+    font-weight: bold;
+  }
 }
 [v-cloak] { display:none; }
 
