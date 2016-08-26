@@ -142,7 +142,7 @@ body {
   border: 1px solid grey;
   margin: 5px;
   padding: 5px;
-  border-radius: 5px; }
+  border-radius: 20px; }
   .ingredients-list > label {
     display: block;
     height: 100%;
