@@ -1,6 +1,7 @@
 <?php
 namespace Halloween\TrickOrTreat\App\Action;
 
+use Halloween\TrickOrTreat\App\ImageFixture;
 use Halloween\TrickOrTreat\Domain\Game\GameId;
 use Prooph\ServiceBus\CommandBus;
 use Psr\Http\Message\RequestInterface;
@@ -38,7 +39,7 @@ final class InitialiseGame
                     'gameId' => $gameId->toString(),
                     'playerOne' => $json->playerOne,
                     'playerTwo' => $json->playerTwo,
-                    'ingredients' => $this->listIngredients()
+                    'ingredients' => ImageFixture::get(9),
                 ]
             );
         } catch (\Exception $e) {
@@ -47,18 +48,5 @@ final class InitialiseGame
                 500
             );
         }
-    }
-
-    private function listIngredients()
-    {
-        $arr = [];
-        for($i=1;$i<=20;++$i){
-            $arr[] = [
-                'id' => $i,
-                'name' => 'spider '.$i,
-                'picture' => 'picturelocation_1'
-            ];
-        }
-        return $arr;
     }
 }
