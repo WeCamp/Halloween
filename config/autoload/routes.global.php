@@ -41,5 +41,11 @@ return [
             'middleware' => \Halloween\TrickOrTreat\App\Action\GetCurrentGame::class,
             'allowed_methods' => ['POST'],
         ],
+        [
+            'name' => 'get_ingredients',
+            'path' => '/get-available-ingredients',
+            'middleware' => \Halloween\TrickOrTreat\App\Action\GetAvailableIngredients::class,
+            'allowed_methods' => ['GET'],
+        ],
     ],
 ];

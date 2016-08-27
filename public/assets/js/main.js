@@ -61,7 +61,11 @@ window.onload = function () {
                     );
             },
             chooseIngredients: function () {
-                this.$set('gameState', "chooseIngredients");
+                this.$http.get('/get-available-ingredients')
+                    .then(function(response){
+                        this.$set('availableIngredients', response.data.ingredients);
+                        this.$set('gameState', "chooseIngredients");
+                    });
             },
             confirmIngredients: function () {
                 if (this.gameCurrentPlayer.id == 1) {
@@ -77,7 +81,6 @@ window.onload = function () {
                     playerOneResult: this.roundResult.playerOneResult,
                     playerTwoResult: this.roundResult.playerTwoResult
                 };
-
                 this.$http.post('/finish-round', JSON.stringify(request))
                     .then(
                         function () {

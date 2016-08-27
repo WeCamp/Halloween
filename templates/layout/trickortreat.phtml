@@ -50,6 +50,8 @@
             <div class="instruction-container">
                 {{ gameCurrentPlayer.name }}, choose your ingredients
             </div>
+
+            <button name="submit" v-on:click="confirmIngredients">Confirm</button>
             <ul>
                 <li class="ingredients-list" v-for="item in availableIngredients">
                     <label>
