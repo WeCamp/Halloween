@@ -113,7 +113,8 @@ input, button {
 button {
   background-color: #52BF4E;
   border: none;
-  max-width: 300px;
+  max-width: 700px;
+  width: 500px;
   display: block;
   margin: 30px auto; }
   button:hover {
@@ -137,10 +138,11 @@ body {
 
 .ingredients-list {
   display: inline-block;
-  width: 150px;
-  height: 150px;
+  width: 350px;
+  height: 350px;
   border: 1px solid grey;
   margin: 5px;
+  margin-left: 50px;
   padding: 5px;
   border-radius: 20px; }
   .ingredients-list > label {
@@ -149,10 +151,10 @@ body {
     text-align: center;
     overflow: hidden; }
     .ingredients-list > label > input, .ingredients-list > label > button {
-      position: absolute;
+      position: relative;
       top: -100px; }
       .ingredients-list > label > input:checked ~ span, .ingredients-list > label > button:checked ~ span {
-        display: block;
+        display: inline-block;
         color: #ff8b1c;
         font-weight: bold;
         text-shadow: 0px 0px 20px black; }
