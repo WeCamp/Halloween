@@ -39,7 +39,7 @@ final class InitialiseGame
                     'gameId' => $gameId->toString(),
                     'playerOne' => $json->playerOne,
                     'playerTwo' => $json->playerTwo,
-                    'ingredients' => ImageFixture::get(20),
+                    'ingredients' => ImageFixture::get(9),
                 ]
             );
         } catch (\Exception $e) {
