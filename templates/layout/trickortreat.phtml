@@ -14,7 +14,7 @@
 <body>
 
 <div class="neutral-background"></div>
-<div id="el">
+<div id="el" v-cloak>
     <section class="topbar">
 
         <div class="l-container">
@@ -55,7 +55,7 @@
                     <label>
                     <input type="checkbox" v-bind:value="item.id" v-model="gameCurrentPlayer.chosenIngredients" />
                         <span>{{ item.name }}</span>
-                        <img src="http://placekitten.com/100/100" />
+                        <!-- <img src="http://placekitten.com/100/100" />-->
                     </label>
                 </li>
             </ul>
@@ -64,30 +64,26 @@
     </div>
 
     <section class="l-container" v-show="gameState == 'confirmRoundResult'">
-        <label>
-            <input type="checkbox"
-                   v-model="roundResult.playerOneResult"
-            />{{ Players.PlayerOne.name }}
-            <span></span>
-        </label>
-        <br/>
-        <label>
-            <input type="checkbox"
-                   v-model="roundResult.playerTwoResult"
-                    v-bind:true-value="true"
-                    v-bind:false-value="false"
-            />
-            {{ Players.PlayerTwo.name }}
-            <span></span>
-        </label>
+        <div class="instruction-container">
+        <button v-bind:class="roundResult.playerOneResult?'':'btn-red'" v-on:click="roundResult.playerOneResult = !roundResult.playerOneResult">
+            <span v-if="roundResult.playerOneResult">I, {{ Players.PlayerOne.name }}, have eaten</span>
+            <span v-else>I, {{ Players.PlayerOne.name }}, have not eaten</span>
+        </button>
+        <button v-bind:class="roundResult.playerTwoResult?'':'btn-red'" v-on:click="roundResult.playerTwoResult = !roundResult.playerTwoResult">
+            <span v-if="roundResult.playerTwoResult">I, {{ Players.PlayerTwo.name }}, have eaten</span>
+            <span v-else>I, {{ Players.PlayerTwo.name }}, have not eaten</span>
+        </button>
 
         <button name="submit" v-on:click="finishRound">Finish Round</button>
+        </div>
     </section>
 
     <section class="l-container" v-show="gameState == 'congratulateWinner'">
 
-            <div class="instruction-container">Congratulations {{ winner }} </div>
-        <button href="/play" v-on:click="newGame">New game, still hungry!</button>
+            <div class="instruction-container">
+                <span class="winner">Congratulations {{ winner }}!</span>
+            </div>
+            <button href="/play" v-on:click="newGame">New game, still hungry!</button>
     </section>
 
     <section class="l-container" v-show="gameState == 'draw'">

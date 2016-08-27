@@ -8,6 +8,14 @@
 .instruction-container {
   margin: auto;
   width: 250px;
+  > .winner {
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+
+[v-cloak] {
+  display: none;
 }
 
 .ingredients-list {
@@ -17,6 +25,7 @@
   border: 1px solid grey;
   margin: 5px;
   padding: 5px;
+  border-radius: 20px;
 
   > label {
     display: block;
@@ -29,10 +38,13 @@
       top: -100px;
       &:checked ~ span {
         display: block;
-        color: red;
+        color: #ff8b1c;
+        font-weight: bold;
+        text-shadow: 0px 0px 20px black;
+      }
+      ~ span {
         font-weight: bold;
       }
     }
   }
-
 }
