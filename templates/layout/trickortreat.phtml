@@ -55,7 +55,7 @@
                     <label>
                     <input type="checkbox" v-bind:value="item.id" v-model="gameCurrentPlayer.chosenIngredients" />
                         <span>{{ item.name }}</span>
-                        <!-- <img src="http://placekitten.com/100/100" />-->
+                        <img src="{{ item.url }}" style="width:100%"/>
                     </label>
                 </li>
             </ul>

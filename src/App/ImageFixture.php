@@ -6,8 +6,8 @@ class ImageFixture
 {
     public static function get($number)
     {
-        $id = 0;
-        return array_rand([
+        $id = 10;
+        $arr = [
             [
                 'id'   => $id++,
                 'name' => 'Disgusting Ox Ball',
@@ -108,6 +108,8 @@ class ImageFixture
                 'name' => 'Disgusting Strange Thing',
                 'url'  => '/assets/img/ingredients/strangething.jpg',
             ],
-        ], $number);
+        ];
+        shuffle($arr);
+        return array_slice($arr, 0, $number);
     }
 }
